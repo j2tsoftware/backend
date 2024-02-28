@@ -15,5 +15,11 @@ namespace WebApi.Controllers
         {
             return Ok();
         }
+
+        [HttpGet(Name = "Test")]
+        public ActionResult Test()
+        {
+            return Ok("Test");
+        }
     }
 }
