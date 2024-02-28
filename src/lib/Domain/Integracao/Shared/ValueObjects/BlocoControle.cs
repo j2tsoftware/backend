@@ -1,4 +1,4 @@
-﻿namespace Domain.Integracao
+﻿namespace Domain.Integracao.Shared
 {
     public class BlocoControle
     {

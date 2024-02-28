@@ -1,6 +1,6 @@
-﻿namespace Domain.Integracao
+﻿namespace Domain.Integracao.Shared
 {
-    public class Pessoa
+    public class Cliente
     {
         public int Documento { get; set; }
         public TipoPessoa TipoPessoa { get; set; }
