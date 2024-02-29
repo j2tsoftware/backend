@@ -4,7 +4,8 @@ services:
     build: .
     container_name: backend    
     ports:
-      - "443:80"
+      - "49161:80"
+      - "49162:443"
   sql:
     image: "mcr.microsoft.com/mssql/server:2022-latest"
     container_name: sql_server2022
