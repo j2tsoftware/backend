@@ -1,4 +1,4 @@
-﻿using Domain.Integracao.Shared;
+﻿using Domain.Shared.Models;
 
 namespace Domain.Integracao.Clientes
 {

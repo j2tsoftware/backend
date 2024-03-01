@@ -1,4 +1,4 @@
-﻿namespace Domain.Integracao.Shared
+﻿namespace Domain.Shared.Models
 {
     public class EntidadeBase
     {
@@ -9,6 +9,6 @@
         public EntidadeBase()
         {
             DataAtualizacao = DateTime.Now;
-        }
+        }        
     }
 }
