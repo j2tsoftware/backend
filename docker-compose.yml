@@ -19,6 +19,6 @@ services:
     depends_on:
       - sql
     volumes:
-      - ./create_database.sql:/tmp/create_database.sql
-      - ./init-database.sh:/tmp/init-database.sh
+      - ./src/lib/Infrastructure/Database/Scripts/create_database.sql:/tmp/create_database.sql
+      - ./src/lib/Infrastructure/Database/Scripts/init-database.sh:/tmp/init-database.sh
     command: /bin/bash ./tmp/init-database.sh
