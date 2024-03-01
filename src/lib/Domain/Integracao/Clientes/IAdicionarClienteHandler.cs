@@ -1,7 +1,9 @@
-﻿namespace Domain.Integracao.Clientes
+﻿using Domain.Shared.Utils;
+
+namespace Domain.Integracao.Clientes
 {
     public interface IAdicionarClienteHandler
     {
-        Task<bool> AdicionarCliente(ClienteRequest requisicao);
+        Task<ValueResult<Cliente>> AdicionarCliente(ClienteRequest requisicao);
     }
 }

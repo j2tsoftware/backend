@@ -19,7 +19,7 @@ namespace WebApi.Controllers
         {
             var resultado = await _adicionarClienteHandler.AdicionarCliente(cliente);
 
-            return resultado ? Ok(resultado) : BadRequest();    
+            return resultado ? Ok(resultado) : BadRequest(resultado.FailureDetails);   
         }
     }
 }

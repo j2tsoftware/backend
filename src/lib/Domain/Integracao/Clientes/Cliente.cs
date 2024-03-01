@@ -1,4 +1,5 @@
 ﻿using Domain.Shared.Models;
+using Domain.Shared.Utils;
 
 namespace Domain.Integracao.Clientes
 {
@@ -10,9 +11,17 @@ namespace Domain.Integracao.Clientes
         public DateTime DataInicioRelacionamento { get; set; }
         public DateTime? DataFimRelacionamento { get; set; }
 
-        public static Cliente MapearPorRequisicao(ClienteRequest requisicao)
+        public Cliente()
         {
-            return new Cliente
+            Validar(this, new ClienteValidator());
+        }
+
+        public static ValueResult<Cliente> Criar(ClienteRequest requisicao)
+        {
+            if (requisicao == null)
+                return ValueResult<Cliente>.Failure();
+
+            var cliente = new Cliente
             {
                 Id = Guid.NewGuid(),
                 Documento = requisicao.Documento,
@@ -22,6 +31,10 @@ namespace Domain.Integracao.Clientes
                 DataFimRelacionamento = requisicao.DataFimRelacionamento,
                 DataCriacao = DateTime.Now
             };
+
+            return cliente.DadosValidos
+                ? ValueResult<Cliente>.Success(cliente)
+                : ValueResult<Cliente>.Failure(cliente.Falhas);
         }
     }
 }
