@@ -9,7 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hosts", "hosts", "{EA57B48E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{D3FE425B-1854-452D-884F-9257F15A1F27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\lib\Domain\Domain.csproj", "{4157F8CE-9BE3-471C-B5E5-6B6BC754A79D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\lib\Domain\Domain.csproj", "{4157F8CE-9BE3-471C-B5E5-6B6BC754A79D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\lib\Infrastructure\Infrastructure.csproj", "{C0781DAB-201C-43C7-8686-A8077F331D3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,10 @@ Global
 		{4157F8CE-9BE3-471C-B5E5-6B6BC754A79D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4157F8CE-9BE3-471C-B5E5-6B6BC754A79D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4157F8CE-9BE3-471C-B5E5-6B6BC754A79D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0781DAB-201C-43C7-8686-A8077F331D3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0781DAB-201C-43C7-8686-A8077F331D3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0781DAB-201C-43C7-8686-A8077F331D3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0781DAB-201C-43C7-8686-A8077F331D3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1853FB50-32E2-432D-8524-203C659B4AAE} = {EA57B48E-92B7-4937-A0D8-56CF768E1C42}
 		{4157F8CE-9BE3-471C-B5E5-6B6BC754A79D} = {D3FE425B-1854-452D-884F-9257F15A1F27}
+		{C0781DAB-201C-43C7-8686-A8077F331D3E} = {D3FE425B-1854-452D-884F-9257F15A1F27}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C17D9B06-068E-4C5F-87CA-7A6A3183CE19}

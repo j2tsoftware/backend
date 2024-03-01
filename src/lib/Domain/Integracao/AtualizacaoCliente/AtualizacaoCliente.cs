@@ -1,4 +1,4 @@
-﻿using Domain.Integracao.Shared;
+﻿using Domain.Integracao.Clientes;
 
 namespace Domain.Integracao.AtualizacaoCliente
 {

@@ -1,4 +1,4 @@
-﻿namespace Domain.Integracao.Shared
+﻿namespace Domain.Integracao.Clientes
 {
     public enum TipoPessoa
     {
