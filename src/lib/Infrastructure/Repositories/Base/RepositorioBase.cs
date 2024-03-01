@@ -1,4 +1,5 @@
 ﻿using Domain.Shared.Repositories;
+using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -7,13 +8,15 @@ namespace Infrastructure.Repositories
     public class RepositorioBase<Entity> : IRepositorioBase<Entity> where Entity : class
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly DatabaseContext Contexto;
+        private DbSet<Entity> Entidade { get; }
         public IUnitOfWork UnitOfWork => _unitOfWork;
-        public DbSet<Entity> Entidade { get; }
 
-        public RepositorioBase(IUnitOfWork unitOfWork)
+        public RepositorioBase(IUnitOfWork unitOfWork, DatabaseContext context)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
-            Entidade = _unitOfWork.SetEntity<Entity>();
+            Contexto = context ?? throw new ArgumentNullException(nameof(context));
+            Entidade = Contexto.Set<Entity>();
         }
 
         public async Task<Entity> ObterPorId(int id)
@@ -57,7 +60,7 @@ namespace Infrastructure.Repositories
         {
             await Task.Run(() =>
             {
-                _unitOfWork.SetEntityModified(model);
+                SetEntityModified(model);
                 Entidade.Update(model);
             });
         }
@@ -68,6 +71,12 @@ namespace Infrastructure.Repositories
             {
                 Entidade.Remove(model);
             });
+        }
+
+        public void SetEntityModified(Entity entity)
+        {
+            if (entity != null)
+                Contexto.Entry(entity).State = EntityState.Modified;
         }
 
         private IQueryable<Entity> GetQueryableWithIncludes(params Expression<Func<Entity, object>>[] includes)

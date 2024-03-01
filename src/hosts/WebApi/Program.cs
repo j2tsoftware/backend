@@ -16,7 +16,7 @@ var app = builder.Build();
 //{
     app.UseSwagger();
     app.UseSwaggerUI();
-    builder.Services.InitializeDatabase();
+    // builder.Services.InitializeDatabase();
 //}
 
 

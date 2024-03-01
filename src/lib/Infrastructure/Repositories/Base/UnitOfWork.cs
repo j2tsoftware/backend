@@ -1,6 +1,5 @@
 ﻿using Domain.Shared.Repositories;
 using Infrastructure.Database;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Infrastructure.Repositories
@@ -13,17 +12,6 @@ namespace Infrastructure.Repositories
         public UnitOfWork(DatabaseContext context)
         {
             Contexto = context;
-        }
-
-        public DbSet<Entity> SetEntity<Entity>() where Entity : class
-        {
-            return Contexto.Set<Entity>();
-        }
-
-        public void SetEntityModified<Entity>(Entity entity)
-        {
-            if (entity != null)
-                Contexto.Entry(entity).State = EntityState.Modified;            
         }
 
         public async Task CommitChanges()

@@ -1,11 +1,12 @@
 ﻿using Domain.Integracao.Clientes;
 using Domain.Shared.Repositories;
+using Infrastructure.Database;
 
 namespace Infrastructure.Repositories
 {
     public class ClientesRepositorio : RepositorioBase<Cliente>, IClientesRepositorio
     {
-        public ClientesRepositorio(IUnitOfWork unitOfWork) : base(unitOfWork) {}
+        public ClientesRepositorio(IUnitOfWork unitOfWork, DatabaseContext context) : base(unitOfWork, context) {}
 
         public Task<Cliente> BuscarClientePorDocumento(int documento)
         {            
