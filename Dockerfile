@@ -1,17 +1,16 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
 WORKDIR /app
+EXPOSE 8080
+EXPOSE 443
 
-# Copy everything else and build
 COPY Backend.sln ./
 COPY src ./src
 
 WORKDIR /app/src/hosts/WebApi
 
-# Copy csproj and restore as distinct layers
 RUN dotnet restore
-RUN dotnet publish -c Release -o out
+RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
 
-#Runtime
 FROM mcr.microsoft.com/dotnet/sdk:7.0
 
 RUN apt-get update
@@ -24,10 +23,6 @@ WORKDIR /app
 COPY --from=build-env /app/src/hosts/WebApi/out .
 RUN chown -R app:app /app
 
-ENV ASPNETCORE_URLS=http://+:8080
-
-EXPOSE 8080
-EXPOSE 443
 USER app
 
 ENTRYPOINT ["dotnet", "WebApi.dll"]   
