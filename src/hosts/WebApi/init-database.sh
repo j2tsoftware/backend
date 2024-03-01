@@ -1,0 +1,1 @@
+﻿/opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P A&VeryComplex123Password -d master -i /tmp/create_database.sql

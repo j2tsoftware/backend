@@ -14,3 +14,11 @@ services:
     environment:
       - ACCEPT_EULA=y
       - SA_PASSWORD=A&VeryComplex123Password
+  mssqltools:
+    image: mcr.microsoft.com/mssql-tools
+    depends_on:
+      - sql
+    volumes:
+      - ./create_database.sql:/tmp/create_database.sql
+      - ./init-database.sh:/tmp/init-database.sh
+    command: /bin/bash ./tmp/init-database.sh
