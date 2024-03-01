@@ -24,21 +24,26 @@ namespace Infrastructure.Database.Migrations
 
             modelBuilder.Entity("Domain.Integracao.Clientes.Cliente", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("DataFim")
+                    b.Property<DateTime?>("DataAtualizacao")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DataInicio")
+                    b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Documento")
+                    b.Property<DateTime?>("DataFimRelacionamento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataInicioRelacionamento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Documento")
+                        .IsRequired()
                         .HasMaxLength(15)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(15)");
 
                     b.Property<string>("Nome")
                         .IsRequired()

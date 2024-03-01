@@ -14,8 +14,10 @@ namespace Infrastructure.Database.Configurations
             builder.Property(e => e.Documento).HasMaxLength(15).IsRequired();
             builder.Property(e => e.Nome).HasMaxLength(500);
             builder.Property(e => e.TipoPessoa).IsRequired();
-            builder.Property(e => e.DataInicio).HasColumnType("datetime2");
-            builder.Property(e => e.DataFim).HasColumnType("datetime2");
+            builder.Property(e => e.DataInicioRelacionamento).HasColumnType("datetime2");
+            builder.Property(e => e.DataFimRelacionamento).HasColumnType("datetime2");
+            builder.Property(e => e.DataCriacao).HasColumnType("datetime2");
+            builder.Property(e => e.DataAtualizacao).HasColumnType("datetime2").IsRequired(false);
         }
     }
 }

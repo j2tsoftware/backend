@@ -1,4 +1,5 @@
 using Infrastructure.Configurations;
+using Application.Configurations;
 using Infrastructure.Database;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddInfrastructure();
+builder.Services.AdicionarInfraestrutura();
+builder.Services.AdicionarAplicacao();
 
 var app = builder.Build();
 
@@ -14,7 +16,7 @@ var app = builder.Build();
 //{
     app.UseSwagger();
     app.UseSwaggerUI();
-    //builder.Services.InitializeDatabase();
+    builder.Services.InitializeDatabase();
 //}
 
 

@@ -13,14 +13,7 @@ namespace WebApi.Controllers
         [HttpGet(Name = "Home")]
         public ActionResult Get()
         {
-            return Ok();
-        }
-
-        [HttpGet]
-        [Route("Test")]
-        public ActionResult Test()
-        {
-            return Ok("Test");
+            return Ok(new { Message = "Backend CCS - Versão 0.0.1 "});
         }
     }
 }
