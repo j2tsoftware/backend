@@ -1,7 +1,5 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 443
 
 COPY Backend.sln ./
 COPY src ./src
@@ -9,7 +7,7 @@ COPY src ./src
 WORKDIR /app/src/hosts/WebApi
 
 RUN dotnet restore
-RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish -c Release -o out /p:UseAppHost=false
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0
 
@@ -22,6 +20,10 @@ RUN groupadd -r app && useradd -r -g app app
 WORKDIR /app
 COPY --from=build-env /app/src/hosts/WebApi/out .
 RUN chown -R app:app /app
+
+ENV ASPNETCORE_URLS=http://+:8080
+
+EXPOSE 8080
 
 USER app
 

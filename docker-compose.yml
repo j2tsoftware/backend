@@ -1,15 +1,18 @@
-version: "3.9"  # optional since v1.27.0
+version: "3.9"
 services:
-  web_api:
+  webapi:
     build: .
-    container_name: backend    
+    container_name: webapi    
     ports:
-      - "49161:80"
-      - "49162:443"
-  sql:
+      - 80
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+    volumes:
+      - ~/.aspnet/https:/https:ro
+  database:
     image: "mcr.microsoft.com/mssql/server:2022-latest"
     container_name: sql_server2022
-    ports: # not actually needed, because the two services are on the same network
+    ports:
       - "1433:1433" 
     environment:
       - ACCEPT_EULA=y
@@ -17,7 +20,7 @@ services:
   mssqltools:
     image: mcr.microsoft.com/mssql-tools
     depends_on:
-      - sql
+      - database
     volumes:
       - ./src/lib/Infrastructure/Database/Scripts/create_database.sql:/tmp/create_database.sql
       - ./src/lib/Infrastructure/Database/Scripts/init-database.sh:/tmp/init-database.sh

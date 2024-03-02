@@ -1,6 +1,5 @@
-using Infrastructure.Configurations;
 using Application.Configurations;
-using Infrastructure.Database;
+using Infrastructure.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,18 +11,17 @@ builder.Services.AdicionarAplicacao();
 
 var app = builder.Build();
 
-//if (app.Environment.IsDevelopment())
-//{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-    // builder.Services.InitializeDatabase();
-//}
-
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API v1"));
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
-app.MapControllers();
+app.MapGet("/", async context =>
+{
+    context.Response.Redirect("/swagger");
+    await context.Response.CompleteAsync();
+});
 
+app.MapControllers();
 app.Run();

@@ -11,8 +11,23 @@ namespace Domain.Integracao.Clientes
         public DateTime DataInicioRelacionamento { get; set; }
         public DateTime? DataFimRelacionamento { get; set; }
 
-        public Cliente()
+        public Cliente() { }
+
+        public Cliente(
+            string nome,
+            string documento,
+            TipoPessoa tipoPessoa,
+            DateTime dataInicioRelacionamento,
+            DateTime? dataFimRelacionamento)
         {
+            Id = Guid.NewGuid();
+            Documento = documento;
+            Nome = nome;
+            TipoPessoa = tipoPessoa;
+            DataInicioRelacionamento = dataInicioRelacionamento;
+            DataFimRelacionamento = dataFimRelacionamento;
+            DataCriacao = DateTime.Now;
+
             Validar(this, new ClienteValidator());
         }
 
@@ -21,16 +36,12 @@ namespace Domain.Integracao.Clientes
             if (requisicao == null)
                 return ValueResult<Cliente>.Failure();
 
-            var cliente = new Cliente
-            {
-                Id = Guid.NewGuid(),
-                Documento = requisicao.Documento,
-                Nome = requisicao.Nome,
-                TipoPessoa = requisicao.TipoPessoa,
-                DataInicioRelacionamento = requisicao.DataInicioRelacionamento,
-                DataFimRelacionamento = requisicao.DataFimRelacionamento,
-                DataCriacao = DateTime.Now
-            };
+            var cliente = new Cliente(
+                requisicao.Nome,
+                requisicao.Documento,
+                requisicao.TipoPessoa,
+                requisicao.DataInicioRelacionamento,
+                requisicao.DataFimRelacionamento);
 
             return cliente.DadosValidos
                 ? ValueResult<Cliente>.Success(cliente)
