@@ -1,4 +1,4 @@
-﻿using Application.Handlers.Clientes;
+﻿using Application.Handlers.Integracao.Clientes;
 using Domain.Integracao.Clientes;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -2,7 +2,7 @@
 using Domain.Shared.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.Integracao.AtualizacaoCliente
+namespace Domain.Integracao.AtualizacaoRelacionamento
 {
     public class AtualizacaoRelacionamento : EntidadeBase
     {
@@ -15,7 +15,7 @@ namespace Domain.Integracao.AtualizacaoCliente
         [NotMapped]
         public BlocoControle BlocoDeControle { get; set; }
 
-        public AtualizacaoRelacionamento() {}
+        public AtualizacaoRelacionamento() { }
 
         public AtualizacaoRelacionamento(IEnumerable<AtualizacaoRelacionamentoCliente> listaDeClientes, int numeroRemessa)
         {

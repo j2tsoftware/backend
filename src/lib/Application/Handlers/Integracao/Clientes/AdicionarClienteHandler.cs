@@ -1,7 +1,7 @@
 ﻿using Domain.Integracao.Clientes;
 using Domain.Shared.Utils;
 
-namespace Application.Handlers.Clientes
+namespace Application.Handlers.Integracao.Clientes
 {
     public class AdicionarClienteHandler : IAdicionarClienteHandler
     {

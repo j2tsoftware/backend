@@ -2,7 +2,7 @@
 
 namespace Domain.Integracao.Clientes
 {
-    public class ClienteValidator : AbstractValidator<Cliente>        
+    public class ClienteValidator : AbstractValidator<Cliente>
     {
         public ClienteValidator()
         {

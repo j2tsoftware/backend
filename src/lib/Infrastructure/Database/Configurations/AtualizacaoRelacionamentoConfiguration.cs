@@ -1,4 +1,4 @@
-﻿using Domain.Integracao.AtualizacaoCliente;
+﻿using Domain.Integracao.AtualizacaoRelacionamento;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

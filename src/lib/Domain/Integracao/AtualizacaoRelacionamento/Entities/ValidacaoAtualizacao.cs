@@ -1,6 +1,6 @@
 ﻿using Domain.Integracao.Shared;
 
-namespace Domain.Integracao.AtualizacaoCliente
+namespace Domain.Integracao.AtualizacaoRelacionamento
 {
     public class ValidacaoAtualizacao
     {

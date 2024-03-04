@@ -1,4 +1,4 @@
-﻿namespace Domain.Integracao.AtualizacaoCliente
+﻿namespace Domain.Integracao.AtualizacaoRelacionamento
 {
     public class AtualizacaoRelacionamentoCliente
     {
@@ -7,5 +7,7 @@
         public char TipoOperacao { get; set; }
         public char QualificadorOperacao { get; set; }
         public Guid AtualizacaoRelacionamentoId { get; set; }
+        public DateTime DataInicioRelacionamento { get; set; }
+        public DateTime? DataFimRelacionamento { get; set; }
     }
 }

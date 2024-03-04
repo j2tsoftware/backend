@@ -1,7 +1,7 @@
 ﻿using Domain.Integracao.Clientes;
 using Domain.Shared.Utils;
 
-namespace Application.Handlers.Clientes
+namespace Application.Handlers.Integracao.Clientes
 {
     public class BuscarClienteHandler : IBuscarClienteHandler
     {
@@ -18,8 +18,8 @@ namespace Application.Handlers.Clientes
             {
                 var cliente = await _clientesRepository.BuscarClientePorDocumento(documento);
 
-                return cliente != null 
-                    ? ValueResult<Cliente>.Success(cliente) 
+                return cliente != null
+                    ? ValueResult<Cliente>.Success(cliente)
                     : ValueResult<Cliente>.Failure("Cliente não encontrado");
             }
             catch (Exception ex)
