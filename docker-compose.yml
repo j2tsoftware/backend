@@ -7,8 +7,8 @@ services:
       - 80
     environment:
       - ASPNETCORE_URLS=http://+:80
-    volumes:
-      - ~/.aspnet/https:/https:ro
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=S0rt3
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=certificate.pfx
   database:
     image: "mcr.microsoft.com/mssql/server:2022-latest"
     container_name: sql_server2022
@@ -21,7 +21,7 @@ services:
     image: mcr.microsoft.com/mssql-tools
     depends_on:
       - database
-    volumes:
-      - ./src/lib/Infrastructure/Database/Scripts/create_database.sql:/tmp/create_database.sql
-      - ./src/lib/Infrastructure/Database/Scripts/init-database.sh:/tmp/init-database.sh
-    command: /bin/bash ./tmp/init-database.sh
+    # volumes:
+    #   - ./src/lib/Infrastructure/Database/Scripts/create_database.sql:/tmp/create_database.sql
+    #   - ./src/lib/Infrastructure/Database/Scripts/init-database.sh:/tmp/init-database.sh
+    # command: /bin/bash ./tmp/init-database.sh

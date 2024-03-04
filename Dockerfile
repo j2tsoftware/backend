@@ -19,11 +19,13 @@ RUN dpkg-reconfigure --frontend noninteractive tzdata
 RUN groupadd -r app && useradd -r -g app app
 WORKDIR /app
 COPY --from=build-env /app/src/hosts/WebApi/out .
+COPY ./certificate.pfx /app
 RUN chown -R app:app /app
 
-ENV ASPNETCORE_URLS=http://+:8080
+ENV ASPNETCORE_URLS=http://+:80
 
-EXPOSE 8080
+EXPOSE 443
+EXPOSE 80
 
 USER app
 
