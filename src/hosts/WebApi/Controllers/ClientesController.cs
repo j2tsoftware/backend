@@ -8,10 +8,14 @@ namespace WebApi.Controllers
     public class ClientesController : ControllerBase
     {
         private readonly IAdicionarClienteHandler _adicionarClienteHandler;
+        private readonly IBuscarClienteHandler _buscarClienteHandler;
 
-        public ClientesController(IAdicionarClienteHandler adicionarClienteHandler)
+        public ClientesController(
+            IAdicionarClienteHandler adicionarClienteHandler,
+            IBuscarClienteHandler buscarClienteHandler)
         {
             _adicionarClienteHandler = adicionarClienteHandler ?? throw new ArgumentNullException(nameof(adicionarClienteHandler));
+            _buscarClienteHandler = buscarClienteHandler ?? throw new ArgumentNullException(nameof(buscarClienteHandler));
         }
 
         [HttpPost]
@@ -19,7 +23,15 @@ namespace WebApi.Controllers
         {
             var resultado = await _adicionarClienteHandler.AdicionarCliente(cliente);
 
-            return resultado ? Ok(resultado) : BadRequest(resultado.FailureDetails);   
+            return resultado ? Ok(resultado.Value) : BadRequest(resultado.FailureDetails);   
+        }
+
+        [HttpGet("{documento}")]
+        public async Task<ActionResult> BuscarCliente(string documento)
+        {
+            var resultado = await _buscarClienteHandler.BuscarClientePorDocumento(documento);
+
+            return resultado ? Ok(resultado.Value) : BadRequest(resultado.FailureDetails);
         }
     }
 }

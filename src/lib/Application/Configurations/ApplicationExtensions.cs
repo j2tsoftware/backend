@@ -16,6 +16,7 @@ namespace Application.Configurations
         public static IServiceCollection RegistrarHandlers(this IServiceCollection services)
         {
             services.AddScoped<IAdicionarClienteHandler, AdicionarClienteHandler>();
+            services.AddScoped<IBuscarClienteHandler, BuscarClienteHandler>();
 
             return services;
         }

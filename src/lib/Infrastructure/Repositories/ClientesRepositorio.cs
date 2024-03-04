@@ -8,7 +8,7 @@ namespace Infrastructure.Repositories
     {
         public ClientesRepositorio(IUnitOfWork unitOfWork, DatabaseContext context) : base(unitOfWork, context) {}
 
-        public Task<Cliente> BuscarClientePorDocumento(int documento)
+        public Task<Cliente> BuscarClientePorDocumento(string documento)
         {            
             return Obter(x => x.Documento.Equals(documento));  
         }
