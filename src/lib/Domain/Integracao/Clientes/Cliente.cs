@@ -5,6 +5,7 @@ namespace Domain.Integracao.Clientes
 {
     public class Cliente : EntidadeBase
     {
+        public Guid Id { get; set; }
         public string Documento { get; set; }
         public string Nome { get; set; }
         public TipoPessoa TipoPessoa { get; set; }

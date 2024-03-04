@@ -1,6 +1,6 @@
 ﻿namespace Domain.Integracao.AtualizacaoCliente
 {
-    public class ValidacaoAtualizacaoCliente : ValidacaoAtualizacao
+    public class ValidacaoAtualizacaoRelacionamento : ValidacaoAtualizacao
     {
         public string Erro { get; set; }
     }
