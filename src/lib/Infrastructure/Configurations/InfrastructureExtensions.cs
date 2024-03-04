@@ -22,16 +22,19 @@ namespace Infrastructure.Configurations
             string connectionString = Environment.GetEnvironmentVariable("CONNECTIONSTRING");
 
             if (string.IsNullOrEmpty(connectionString))
-                ArgumentNullException.ThrowIfNull(nameof(connectionString));
-            else 
-                services.AddDbContext<DatabaseContext>(optionsBuilder => { optionsBuilder.UseSqlServer(connectionString); });
+                throw new ArgumentNullException(nameof(services), "Conexão com banco não informada");
+
+            services.AddDbContext<DatabaseContext>(optionsBuilder => 
+            { 
+                optionsBuilder.UseSqlServer(connectionString, s => s.EnableRetryOnFailure(1)); 
+            });
 
             return services;
         }
 
         private static IServiceCollection RegistrarRepositorios(this IServiceCollection services)
         {
-            services.AddScoped<IUnitOfWork>(x => new UnitOfWork(x.GetRequiredService<DatabaseContext>()));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IRepositorioBase<>), typeof(RepositorioBase<>));
             services.AddScoped<IClientesRepositorio, ClientesRepositorio>();
 

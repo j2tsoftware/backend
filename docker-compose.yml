@@ -7,6 +7,7 @@ services:
       - 80
     environment:
       - ASPNETCORE_URLS=http://+:80
+      - CONNECTIONSTRING="Data Source=localhost,1433;Initial Catalog=ccs;User ID=sa;Password=A&VeryComplex123Password;TrustServerCertificate=True"
       #- ASPNETCORE_Kestrel__Certificates__Default__Password=S0rt3
       #- ASPNETCORE_Kestrel__Certificates__Default__Path=certificate.pfx
   database:
