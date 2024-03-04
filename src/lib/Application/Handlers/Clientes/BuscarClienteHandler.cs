@@ -5,18 +5,18 @@ namespace Application.Handlers.Clientes
 {
     public class BuscarClienteHandler : IBuscarClienteHandler
     {
-        private readonly IClientesRepositorio _clientesRepositorio;
+        private readonly IClientesRepository _clientesRepository;
 
-        public BuscarClienteHandler(IClientesRepositorio clientesRepositorio)
+        public BuscarClienteHandler(IClientesRepository clientesRepositorio)
         {
-            _clientesRepositorio = clientesRepositorio ?? throw new ArgumentNullException(nameof(clientesRepositorio));
+            _clientesRepository = clientesRepositorio ?? throw new ArgumentNullException(nameof(clientesRepositorio));
         }
 
         public async Task<ValueResult<Cliente>> BuscarClientePorDocumento(string documento)
         {
             try
             {
-                var cliente = await _clientesRepositorio.BuscarClientePorDocumento(documento);
+                var cliente = await _clientesRepository.BuscarClientePorDocumento(documento);
 
                 return cliente != null 
                     ? ValueResult<Cliente>.Success(cliente) 

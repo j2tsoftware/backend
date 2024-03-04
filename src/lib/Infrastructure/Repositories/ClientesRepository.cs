@@ -4,9 +4,9 @@ using Infrastructure.Database;
 
 namespace Infrastructure.Repositories
 {
-    public class ClientesRepositorio : RepositorioBase<Cliente>, IClientesRepositorio
+    public class ClientesRepository : RepositorioBase<Cliente>, IClientesRepository
     {
-        public ClientesRepositorio(IUnitOfWork unitOfWork, DatabaseContext context) : base(unitOfWork, context) {}
+        public ClientesRepository(IUnitOfWork unitOfWork, DatabaseContext context) : base(unitOfWork, context) {}
 
         public Task<Cliente> BuscarClientePorDocumento(string documento)
         {            

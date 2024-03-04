@@ -36,7 +36,7 @@ namespace Infrastructure.Configurations
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IRepositorioBase<>), typeof(RepositorioBase<>));
-            services.AddScoped<IClientesRepositorio, ClientesRepositorio>();
+            services.AddScoped<IClientesRepository, ClientesRepository>();
 
             return services;
         }

@@ -2,7 +2,7 @@
 
 namespace Domain.Integracao.Clientes
 {
-    public interface IClientesRepositorio : IRepositorioBase<Cliente>
+    public interface IClientesRepository : IRepositorioBase<Cliente>
     {
         Task AdicionarCliente(Cliente cliente);
         Task<Cliente> BuscarClientePorDocumento(string documento);

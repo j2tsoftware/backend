@@ -5,11 +5,11 @@ namespace Application.Handlers.Clientes
 {
     public class AdicionarClienteHandler : IAdicionarClienteHandler
     {
-        private readonly IClientesRepositorio _clientesRepositorio;
+        private readonly IClientesRepository _clientesRepository;
 
-        public AdicionarClienteHandler(IClientesRepositorio clientesRepositorio)
+        public AdicionarClienteHandler(IClientesRepository clientesRepositorio)
         {
-            _clientesRepositorio = clientesRepositorio ?? throw new ArgumentNullException(nameof(clientesRepositorio));
+            _clientesRepository = clientesRepositorio ?? throw new ArgumentNullException(nameof(clientesRepositorio));
         }
 
         public async Task<ValueResult<Cliente>> AdicionarCliente(ClienteRequest requisicao)
@@ -21,8 +21,8 @@ namespace Application.Handlers.Clientes
                 if (!cliente.Succeeded)
                     return cliente;
 
-                await _clientesRepositorio.AdicionarCliente(cliente.Value);
-                await _clientesRepositorio.UnitOfWork.CommitChanges();
+                await _clientesRepository.AdicionarCliente(cliente.Value);
+                await _clientesRepository.UnitOfWork.CommitChanges();
 
                 return cliente;
             }
