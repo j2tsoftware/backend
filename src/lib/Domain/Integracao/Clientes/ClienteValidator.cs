@@ -6,10 +6,10 @@ namespace Domain.Integracao.Clientes
     {
         public ClienteValidator()
         {
-            RuleFor(x => x.Documento).NotEmpty();
-            RuleFor(x => x.Nome).NotEmpty();
-            RuleFor(x => x.TipoPessoa).NotEmpty();
-            RuleFor(x => x.DataInicioRelacionamento).NotNull();
+            RuleFor(x => x.Documento).NotEmpty().WithMessage("O documento é obrigatório");
+            RuleFor(x => x.Nome).NotEmpty().WithMessage("O nome é obrigatório");
+            RuleFor(x => x.TipoPessoa).NotEmpty().WithMessage("O tipo de pessoa é obrigatório");
+            RuleFor(x => x.DataInicioRelacionamento).NotNull().WithMessage("A data de início do relacionamento é obrigatória");
         }
     }
 }

@@ -6,7 +6,7 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "CONNECTIONSTRING": "Data Source=localhost,1433;Initial Catalog=ccs;User ID=sa;Password=A&VeryComplex123Password;TrustServerCertificate=True"
+        "CONNECTIONSTRING": "Data Source=localhost,1433;Initial Catalog=ccs;User ID=sa;Password=VeryComplex123Password;TrustServerCertificate=True"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7039;http://localhost:5095"
@@ -18,7 +18,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_URLS": "https://+:443;http://+:80",
-        "CONNECTIONSTRING": "Data Source=localhost,1433;Initial Catalog=ccs;User ID=sa;Password=A&VeryComplex123Password;TrustServerCertificate=True"
+        "CONNECTIONSTRING": "Data Source=localhost,1433;Initial Catalog=ccs;User ID=sa;Password=VeryComplex123Password;TrustServerCertificate=True"
       },
       "publishAllPorts": true,
       "useSSL": true
