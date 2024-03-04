@@ -7,8 +7,8 @@ services:
       - 80
     environment:
       - ASPNETCORE_URLS=http://+:80
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=S0rt3
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=certificate.pfx
+      #- ASPNETCORE_Kestrel__Certificates__Default__Password=S0rt3
+      #- ASPNETCORE_Kestrel__Certificates__Default__Path=certificate.pfx
   database:
     image: "mcr.microsoft.com/mssql/server:2022-latest"
     container_name: sql_server2022
