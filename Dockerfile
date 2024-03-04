@@ -26,6 +26,7 @@ RUN groupadd -r app && useradd -r -g app app
 RUN chown -R app:app /app
 
 ENV ASPNETCORE_URLS=http://+:80
+ENV ASPNETCORE_ENVIRONMENT=Development
 USER app
 
 ENTRYPOINT ["dotnet", "WebApi.dll"]

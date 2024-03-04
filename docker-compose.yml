@@ -1,15 +1,5 @@
 version: "3.9"
 services:
-  webapi:
-    build: .
-    container_name: webapi    
-    ports:
-      - 80
-    environment:
-      - ASPNETCORE_URLS=http://+:80
-      - CONNECTIONSTRING="Data Source=localhost,1433;Initial Catalog=ccs;User ID=sa;Password=A&VeryComplex123Password;TrustServerCertificate=True"
-      #- ASPNETCORE_Kestrel__Certificates__Default__Password=S0rt3
-      #- ASPNETCORE_Kestrel__Certificates__Default__Path=certificate.pfx
   database:
     image: "mcr.microsoft.com/mssql/server:2022-latest"
     container_name: sql_server2022
@@ -17,12 +7,24 @@ services:
       - "1433:1433" 
     environment:
       - ACCEPT_EULA=y
-      - SA_PASSWORD=A&VeryComplex123Password
-  mssqltools:
-    image: mcr.microsoft.com/mssql-tools
+      - SA_PASSWORD=VeryComplex123Password
+    networks:
+      - backend-network
+  webapi:
+    build: .
+    container_name: webapi    
+    ports:
+      - 80
     depends_on:
       - database
-    # volumes:
-    #   - ./src/lib/Infrastructure/Database/Scripts/create_database.sql:/tmp/create_database.sql
-    #   - ./src/lib/Infrastructure/Database/Scripts/init-database.sh:/tmp/init-database.sh
-    # command: /bin/bash ./tmp/init-database.sh
+    environment:
+      - ASPNETCORE_ENVIRONMENT:Development
+      - ASPNETCORE_URLS=http://+:80
+      - CONNECTIONSTRING=Server=database;Database=ccs;User=sa;Password=VeryComplex123Password;
+      #- ASPNETCORE_Kestrel__Certificates__Default__Password=S0rt3
+      #- ASPNETCORE_Kestrel__Certificates__Default__Path=certificate.pfx
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
