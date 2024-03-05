@@ -1,4 +1,5 @@
-﻿using Domain.Integracao.Clientes;
+﻿using Domain.Integracao.AtualizacoesRelacionamentos;
+using Domain.Integracao.Clientes;
 using Domain.Shared.Repositories;
 using Infrastructure.Database;
 using Infrastructure.Repositories;
@@ -35,8 +36,9 @@ namespace Infrastructure.Configurations
         private static IServiceCollection RegistrarRepositorios(this IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped(typeof(IRepositorioBase<>), typeof(RepositorioBase<>));
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IClientesRepository, ClientesRepository>();
+            services.AddScoped<IAtualizacoesRelacionamentosRepository, AtualizacoesRelacionamentosRepository>();
 
             return services;
         }

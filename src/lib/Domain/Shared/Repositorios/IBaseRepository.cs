@@ -2,7 +2,7 @@
 
 namespace Domain.Shared.Repositories
 {
-    public interface IRepositorioBase<Model> where Model : class
+    public interface IBaseRepository<Model> where Model : class
     {
         IUnitOfWork UnitOfWork { get; }
         Task<Model> ObterPorId(int id);

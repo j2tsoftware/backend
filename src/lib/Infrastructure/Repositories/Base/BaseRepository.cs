@@ -5,14 +5,14 @@ using System.Linq.Expressions;
 
 namespace Infrastructure.Repositories
 {
-    public class RepositorioBase<Entity> : IRepositorioBase<Entity> where Entity : class
+    public class BaseRepository<Entity> : IBaseRepository<Entity> where Entity : class
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly DatabaseContext Contexto;
         private DbSet<Entity> Entidade { get; }
         public IUnitOfWork UnitOfWork => _unitOfWork;
 
-        public RepositorioBase(IUnitOfWork unitOfWork, DatabaseContext context)
+        public BaseRepository(IUnitOfWork unitOfWork, DatabaseContext context)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
             Contexto = context ?? throw new ArgumentNullException(nameof(context));

@@ -1,4 +1,4 @@
-﻿namespace Domain.Integracao.AtualizacaoRelacionamento
+﻿namespace Domain.Integracao.AtualizacoesRelacionamentos
 {
     public class AtualizacaoRelacionamentoCliente
     {

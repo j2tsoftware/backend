@@ -11,16 +11,16 @@ namespace Domain.Shared.Models
         public DateTime? DataAtualizacao { get; set; }
 
         [NotMapped]
-        protected bool DadosValidos { get; private set; }
+        public bool DadosValidos { get; private set; }
 
         [NotMapped]
-        protected bool DadosInvalidos => !DadosValidos;
+        public bool DadosInvalidos => !DadosValidos;
 
         [NotMapped]
-        protected ValidationResult Validacoes { get; private set; }
+        public ValidationResult Validacoes { get; private set; }
 
         [NotMapped]
-        protected IEnumerable<ValueFailureDetail> Falhas => Erros();
+        public IEnumerable<ValueFailureDetail> Falhas => Erros();
 
         public EntidadeBase()
         {

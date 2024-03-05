@@ -2,7 +2,7 @@
 using Domain.Shared.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.Integracao.AtualizacaoRelacionamento
+namespace Domain.Integracao.AtualizacoesRelacionamentos
 {
     public class AtualizacaoRelacionamento : EntidadeBase
     {
@@ -24,6 +24,8 @@ namespace Domain.Integracao.AtualizacaoRelacionamento
             DataMovimentacao = DateTime.Now;
             NumeroRemessa = numeroRemessa;
             BlocoDeControle = new BlocoControle(TagsArquivos.AtualizacaoCliente, numeroRemessa);
+
+            Validar(this, new AtualizacaoRelacionamentoValidator());
         }
     }
 }

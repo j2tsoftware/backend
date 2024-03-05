@@ -1,6 +1,6 @@
 ﻿using Domain.Integracao.Shared;
 
-namespace Domain.Integracao.AtualizacaoRelacionamento
+namespace Domain.Integracao.AtualizacoesRelacionamentos
 {
     public class RespostaAtualizacao
     {
