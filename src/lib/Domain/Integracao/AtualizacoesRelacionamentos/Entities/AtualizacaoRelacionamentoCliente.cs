@@ -1,4 +1,7 @@
-﻿namespace Domain.Integracao.AtualizacoesRelacionamentos
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+
+namespace Domain.Integracao.AtualizacoesRelacionamentos
 {
     public class AtualizacaoRelacionamentoCliente
     {
@@ -9,5 +12,9 @@
         public Guid AtualizacaoRelacionamentoId { get; set; }
         public DateTime DataInicioRelacionamento { get; set; }
         public DateTime? DataFimRelacionamento { get; set; }
+
+        [NotMapped]
+        [JsonIgnore]
+        public virtual AtualizacaoRelacionamento AtualizacaoRelacionamento { get; set; }
     }
 }

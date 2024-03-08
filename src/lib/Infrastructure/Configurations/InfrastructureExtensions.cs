@@ -27,7 +27,7 @@ namespace Infrastructure.Configurations
 
             services.AddDbContext<DatabaseContext>(optionsBuilder => 
             { 
-                optionsBuilder.UseSqlServer(connectionString, s => s.EnableRetryOnFailure(1)); 
+                optionsBuilder.UseSqlServer(connectionString); 
             });
 
             return services;

@@ -8,9 +8,8 @@ namespace Domain.Integracao.AtualizacoesRelacionamentos
         {
             RuleFor(x => x.NumeroRemessa).NotEmpty().WithMessage("O número da remessa é obrigatório");
             RuleFor(x => x.QuantidadeOperacao).NotEmpty().WithMessage("A quantidade de clientes deve ser informada");
-            
-            RuleFor(x => x.Clientes)
-                .ForEach(x => x.SetValidator(new AtualizacaoRelacionamentoClienteValidator()));
+            RuleFor(x => x.Clientes).NotEmpty().WithMessage("Lista de clientes não deve ser vazia");
+            RuleFor(x => x.Clientes).ForEach(x => x.SetValidator(new AtualizacaoRelacionamentoClienteValidator()));
         }
     }
 }

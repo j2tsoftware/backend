@@ -7,7 +7,7 @@ namespace Domain.Integracao.AtualizacoesRelacionamentos
     public class AtualizacaoRelacionamento : EntidadeBase
     {
         public Guid Id { get; set; }
-        public IEnumerable<AtualizacaoRelacionamentoCliente> Clientes { get; set; }
+        public List<AtualizacaoRelacionamentoCliente> Clientes { get; set; }
         public int QuantidadeOperacao { get; set; }
         public int NumeroRemessa { get; set; }
         public DateTime DataMovimentacao { get; set; }
@@ -19,9 +19,10 @@ namespace Domain.Integracao.AtualizacoesRelacionamentos
 
         public AtualizacaoRelacionamento(IEnumerable<AtualizacaoRelacionamentoCliente> listaDeClientes, int numeroRemessa)
         {
-            Clientes = listaDeClientes;
-            QuantidadeOperacao = Clientes != null && Clientes.Any() ? Clientes.Count() : 0;
+            Clientes = listaDeClientes.ToList();
+            QuantidadeOperacao = Clientes != null && Clientes.Any() ? Clientes.Count : 0;
             DataMovimentacao = DateTime.Now;
+            DataCriacao = DateTime.Now;
             NumeroRemessa = numeroRemessa;
             BlocoDeControle = new BlocoControle(TagsArquivos.AtualizacaoCliente, numeroRemessa);
 

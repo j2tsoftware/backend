@@ -20,7 +20,7 @@ namespace Application.Handlers.Integracao.AtualizacoesRelacionamentos
             {
                 var atualizacao = AtualizacaoRelacionamentoFactory.CriarPorRequisicao(requisicao, 1);
                 
-                if (atualizacao.Succeeded)
+                if (!atualizacao)
                     return atualizacao;
 
                 await _repository.AdicionarAtualizacaoDeRelacionamentos(atualizacao.Value);
@@ -32,7 +32,7 @@ namespace Application.Handlers.Integracao.AtualizacoesRelacionamentos
             catch (Exception ex)
             {
                 _repository.UnitOfWork.Rollback();
-                return ValueResult<AtualizacaoRelacionamento>.Failure($"Falha ao adicionar atualizações: {ex.Message}");
+                return ValueResult<AtualizacaoRelacionamento>.Failure($"Falha ao adicionar atualizações", ex.Message);
             }
         }
     }

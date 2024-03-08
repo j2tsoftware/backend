@@ -11,9 +11,11 @@ namespace Infrastructure.Database.Configurations
             builder.ToTable("AtualizacoesRelacionamentosClientes");
             builder.HasKey(e => e.Id);
             builder.Property(e => e.Documento).IsRequired();
-            builder.Property(e => e.AtualizacaoRelacionamentoId).IsRequired();
             builder.Property(e => e.TipoOperacao).IsRequired();
             builder.Property(e => e.QualificadorOperacao).IsRequired();
+            builder.Property(e => e.AtualizacaoRelacionamentoId).IsRequired();
+            builder.Property(e => e.DataInicioRelacionamento).HasColumnType("datetime2").IsRequired();
+            builder.Property(e => e.DataFimRelacionamento).HasColumnType("datetime2");
         }
     }
 }

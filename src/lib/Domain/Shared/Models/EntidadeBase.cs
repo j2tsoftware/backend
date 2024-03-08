@@ -39,7 +39,7 @@ namespace Domain.Shared.Models
 
         private IEnumerable<ValueFailureDetail> Erros()
         {
-            return Validacoes.Errors.Select(x => new ValueFailureDetail(x.ErrorMessage, x.ErrorCode));
+            return Validacoes?.Errors?.Select(x => new ValueFailureDetail(x.ErrorMessage, x.ErrorCode));
         }
     }
 }
