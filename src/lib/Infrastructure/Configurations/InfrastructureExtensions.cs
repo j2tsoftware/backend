@@ -1,4 +1,5 @@
-﻿using Domain.Integracao.Clientes;
+﻿using Domain.Gerenciamento.Usuarios;
+using Domain.Integracao.Clientes;
 using Domain.Shared.Repositories;
 using Infrastructure.Database;
 using Infrastructure.Repositories;
@@ -24,9 +25,9 @@ namespace Infrastructure.Configurations
             if (string.IsNullOrEmpty(connectionString))
                 throw new ArgumentNullException(nameof(services), "Conexão com banco não informada");
 
-            services.AddDbContext<DatabaseContext>(optionsBuilder => 
-            { 
-                optionsBuilder.UseSqlServer(connectionString, s => s.EnableRetryOnFailure(1)); 
+            services.AddDbContext<DatabaseContext>(optionsBuilder =>
+            {
+                optionsBuilder.UseSqlServer(connectionString, s => s.EnableRetryOnFailure(1));
             });
 
             return services;
@@ -37,6 +38,7 @@ namespace Infrastructure.Configurations
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IRepositorioBase<>), typeof(RepositorioBase<>));
             services.AddScoped<IClientesRepository, ClientesRepository>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             return services;
         }

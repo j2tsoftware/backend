@@ -1,4 +1,5 @@
-﻿using Domain.Integracao.Clientes;
+﻿using Domain.Gerenciamento;
+using Domain.Integracao.Clientes;
 using Infrastructure.Database.Configurations;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,7 @@ namespace Infrastructure.Database
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
 
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
